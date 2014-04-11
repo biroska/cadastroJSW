@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Cadastro JSW</title>
+</h:head>
+<h:body>
+	<h:form>
+		<div align="center">
+
+			<h:outputText value="#{loginMB.registrationBo.teste}" />
+			<h:outputText value="#{loginMB.user.nome}" />
+			<p:panelGrid>
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="2" style="text-align:center">
+							<h:outputText id="lLogin" value="#{msg.login}" />
+						</p:column>
+					</p:row>
+				</f:facet>
+
+				<p:row>
+					<p:column>
+						<h:outputText id="lusuario" value="#{msg.usuario}" />
+					</p:column>
+					<p:column>
+						<h:inputText id="alLogin" value="#{loginMB.usuario}" />
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column>
+						<h:outputText id="lSenha" value="#{msg.senha}" />
+					</p:column>
+					<p:column>
+						<p:password id="alSenha" value="#{loginMB.senha}" />
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column>
+						<h:outputText id="lUsaWebService" value="#{msg.usaWebService}" />
+					</p:column>
+					<p:column>
+						<p:selectBooleanCheckbox id="usaWebService"
+							value="#{loginMB.utilizaWebService}" />
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column colspan="2" style="text-align:center">
+						<h:commandButton id="bLogin" value="#{msg.login}"
+							action="#{loginMB.login}" />
+					</p:column>
+				</p:row>
+
+				<p:row rendered="#{loginMB.erro}">
+					<p:column colspan="2" style="text-align:center">
+						<h:messages />
+					</p:column>
+				</p:row>
+
+			</p:panelGrid>
+		</div>
+	</h:form>
+</h:body>
+</html>
