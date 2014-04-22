@@ -18,6 +18,9 @@ public class FacadeImpl implements Facade {
 	@Autowired
 	CidadeDAO daoCidade;
 	
+	@Autowired
+	EstadoDAO daoEstado;
+	
 	@Override
 	public boolean loginUsuario(String usuario, String senha) {
 		LoginDAO dao = new LoginDAO();
@@ -26,8 +29,8 @@ public class FacadeImpl implements Facade {
 
 	@Override
 	public Estado carregarEstadoPorSigla(String sigla) {
-		EstadoDAO daoEs = new EstadoDAO();
-		return daoEs.carregarEstadoPorSigla(sigla);
+//		EstadoDAO daoEs = new EstadoDAO();
+		return daoEstado.carregarEstadoPorSigla(sigla);
 	}
 
 	@Override
@@ -35,12 +38,16 @@ public class FacadeImpl implements Facade {
 //		CidadeDAO dao = new CidadeDAO();
 		daoCidade.addCidade( cidade );
 	}
+	
+	@Override
+	public void addEstado(Estado e){
+		daoEstado.addEstado(e);
+	}
 
 	// Executado durante a inicialização do bean, definido no appContext
 	@PostConstruct
 	public void teste() throws Exception {
-		System.out
-				.println("======================================= FacadeImpl.teste() =======================================");
+		System.out.println("======================================= FacadeImpl.teste() =======================================");
 	}
 
 }

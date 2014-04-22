@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
-import sessionFactory.FabricaSessao;
 import entidade.Estado;
  
 /*@Repository("estadoDAO")
@@ -32,20 +31,26 @@ public class EstadoDAO extends FabricaSessao {
 
 @Repository("estadoDAO")
 @Scope("prototype")
-public class EstadoDAO {
+public class EstadoDAO extends BaseDAO {
 	
-	@Autowired
-	private SessionFactory sessionFactory;
+//	@Autowired
+//	private SessionFactory sessionFactory;
+	
+	public void addEstado(Estado e){
+		Session session = getSessionFactory().openSession();
+		session.save(e);
+		session.close();
+	}
 	
 	public Estado carregarEstadoPorSigla( String sigla ){
 
-		Criteria criteria = sessionFactory.openSession().createCriteria(Estado.class);
+		Criteria criteria = getSessionFactory().openSession().createCriteria(Estado.class);
 		
 		criteria.add( Restrictions.eq("sgEstado", sigla ) );
 		
 		Estado estado = (Estado) criteria.uniqueResult();
 		
-		sessionFactory.close();
+		getSessionFactory().close();
 		
 		return estado;
 	}

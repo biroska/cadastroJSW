@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import webService.CepWebService;
 import entidade.Cidade;
+import entidade.Estado;
 import facade.Facade;
  
 @Component("cadastroMB")
@@ -54,9 +55,10 @@ public class CadastroBean {
             }
     	}
     	
-    	facade.addCidade( new Cidade() );
+//    	facade.addEstado( new Estado("TE", "TESTE", "CAPITAL TESTE", "REGIAO") );
+//    	facade.addEstado( new Estado("T2", "TESTE_2", "CAPITAL TESTE_2", "REGIAO2") );
     	
-//    	System.out.println("CadastroBean.buscaEndereco(): " + facade.carregarEstadoPorSigla("SP").getNmEstado() );
+    	System.out.println("CadastroBean.buscaEndereco(): " + facade.carregarEstadoPorSigla("SP").getNmEstado() );
     	
     }
     
