@@ -6,6 +6,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
+<f:event listener="#{cadastroMB.onLoadSetaCampos}" type="preRenderView" />
+
 <h:head>
 	<title>Cadastro JSW</title>
 </h:head>
@@ -78,10 +80,8 @@
 				</p:column>
 				<p:column>
 					<p:selectOneMenu id="alLogradouro" value="#{cadastroMB.usuario.endereco.logradouro}">  
-			            <f:selectItem itemLabel="Selecione" itemValue="" />  
-			            <f:selectItem itemLabel="Rua"       itemValue="Rua" />  
-			            <f:selectItem itemLabel="Avenida"   itemValue="2" />  
-			            <f:selectItem itemLabel="Praça"     itemValue="3" />  
+			            <f:selectItem itemLabel="Selecione" itemValue="" />   
+			            <f:selectItems  value="#{cadastroMB.logradouros}" var="log" itemLabel="#{log.nmLogradouro}" itemValue="#{log.idLogradouro}" />  
 			        </p:selectOneMenu> 
 				</p:column>
 				<p:column>

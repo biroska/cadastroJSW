@@ -25,6 +25,11 @@ public class Logradouro implements java.io.Serializable {
 	private String sgLogradouro;
 	private Set<Endereco> enderecos = new HashSet<Endereco>(0);
 
+	@Override
+	public String toString() {
+		return nmLogradouro;
+	}
+
 	public Logradouro() {
 	}
 

@@ -1,9 +1,12 @@
 package beans;
 
+import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ComponentSystemEvent;
 
 import model.Usuario;
 
@@ -11,8 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import webService.CepWebService;
-import entidade.Cidade;
 import entidade.Estado;
+import entidade.Logradouro;
 import facade.Facade;
  
 @Component("cadastroMB")
@@ -28,9 +31,17 @@ public class CadastroBean {
     
     private String cepAlfa;
     
+    private List<Logradouro> logradouros;
+    
     private boolean erro = false;
     
     private String teste;
+    
+    public void onLoadSetaCampos( ComponentSystemEvent event ){
+    	
+    	logradouros = facade.carregarTodosLogradouros();
+    	System.out.println("CadastroBean.onLoadSetaCampos()");
+    }
     
     public void buscaEndereco( ){
     	
@@ -85,13 +96,19 @@ public class CadastroBean {
 		this.cepAlfa = cepAlfa;
 	}
 
-
 	public String getTeste() {
 		return teste;
 	}
 
-
 	public void setTeste(String teste) {
 		this.teste = teste;
+	}
+
+	public List<Logradouro> getLogradouros() {
+		return logradouros;
+	}
+
+	public void setLogradouros(List<Logradouro> logradouros) {
+		this.logradouros = logradouros;
 	}
 }

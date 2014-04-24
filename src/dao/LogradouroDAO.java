@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 import entidade.Logradouro;
-import entidade.Logradouro;
 
 @Repository("logradouroDAO")
 @Scope( BeanDefinition.SCOPE_PROTOTYPE )
