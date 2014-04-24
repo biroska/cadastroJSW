@@ -3,7 +3,6 @@ package facade;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import dao.CidadeDAO;
@@ -29,7 +28,6 @@ public class FacadeImpl implements Facade {
 
 	@Override
 	public Estado carregarEstadoPorSigla(String sigla) {
-//		EstadoDAO daoEs = new EstadoDAO();
 		return daoEstado.carregarEstadoPorSigla(sigla);
 	}
 
