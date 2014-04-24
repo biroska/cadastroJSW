@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import dao.CidadeDAO;
-import dao.EstadoDAO;
+import dao.EstadoInterfDAO;
 import dao.LoginDAO;
 import entidade.Cidade;
 import entidade.Estado;
@@ -17,8 +17,10 @@ public class FacadeImpl implements Facade {
 	@Autowired
 	CidadeDAO daoCidade;
 	
+//	@Autowired
+//	EstadoDAO daoEstado;
 	@Autowired
-	EstadoDAO daoEstado;
+	EstadoInterfDAO daoEstado;
 	
 	@Override
 	public boolean loginUsuario(String usuario, String senha) {
@@ -33,13 +35,13 @@ public class FacadeImpl implements Facade {
 
 	@Override
 	public void addCidade(Cidade cidade) {
-//		CidadeDAO dao = new CidadeDAO();
 		daoCidade.addCidade( cidade );
 	}
 	
 	@Override
 	public void addEstado(Estado e){
-		daoEstado.addEstado(e);
+//		daoEstado.addEstado(e);
+		daoEstado.save( e );
 	}
 
 	// Executado durante a inicialização do bean, definido no appContext

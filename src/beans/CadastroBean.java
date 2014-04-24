@@ -55,8 +55,7 @@ public class CadastroBean {
             }
     	}
     	
-//    	facade.addEstado( new Estado("TE", "TESTE", "CAPITAL TESTE", "REGIAO") );
-    	facade.addEstado( new Estado("T2", "TESTE_2", "CAPITAL TESTE_2", "REGIAO2") );
+    	facade.addEstado( new Estado("TE", "TESTE", "CAPITAL TESTE", "REGIAO") );
     	
     	System.out.println("CadastroBean.buscaEndereco(): " + facade.carregarEstadoPorSigla("SP").getNmEstado() );
     	

@@ -1,16 +1,21 @@
 package dao;
 
+import entidade.Estado;
+import generic.AbstractDAO;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
-
-import entidade.Estado;
  
 @Repository("estadoDAO")
 @Scope("prototype")
-public class EstadoDAO extends BaseDAO {
+public class EstadoDAO extends AbstractDAO<Estado> implements EstadoInterfDAO {
+
+	public EstadoDAO() {
+        super(Estado.class);
+	}
 	
 	public void addEstado(Estado e){
 		Session session = getSessionFactory().openSession();
