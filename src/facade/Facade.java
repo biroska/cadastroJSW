@@ -15,4 +15,5 @@ public interface Facade {
 		public void addCidade(Cidade cidade);
 		public void addEstado(Estado e);
 		public List<Logradouro> carregarTodosLogradouros();
+		public void testarTransacao();
 }

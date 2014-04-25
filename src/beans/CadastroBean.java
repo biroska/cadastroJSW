@@ -33,13 +33,15 @@ public class CadastroBean {
     
     private List<Logradouro> logradouros;
     
+    private Logradouro logradouro = new Logradouro();
+    
     private boolean erro = false;
     
     private String teste;
     
     public void onLoadSetaCampos( ComponentSystemEvent event ){
     	
-    	logradouros = facade.carregarTodosLogradouros();
+    	logradouros = logradouros != null ? logradouros : facade.carregarTodosLogradouros();
     	System.out.println("CadastroBean.onLoadSetaCampos()");
     }
     
@@ -66,9 +68,11 @@ public class CadastroBean {
             }
     	}
     	
-    	facade.addEstado( new Estado("TE", "TESTE", "CAPITAL TESTE", "REGIAO") );
+    	facade.testarTransacao();
     	
-    	System.out.println("CadastroBean.buscaEndereco(): " + facade.carregarEstadoPorSigla("SP").getNmEstado() );
+//    	facade.addEstado( new Estado("TE", "TESTE", "CAPITAL TESTE", "REGIAO") );
+//    	
+//    	System.out.println("CadastroBean.buscaEndereco(): " + facade.carregarEstadoPorSigla("SP").getNmEstado() );
     	
     }
     
@@ -110,5 +114,13 @@ public class CadastroBean {
 
 	public void setLogradouros(List<Logradouro> logradouros) {
 		this.logradouros = logradouros;
+	}
+
+	public Logradouro getLogradouro() {
+		return logradouro;
+	}
+
+	public void setLogradouro(Logradouro logradouro) {
+		this.logradouro = logradouro;
 	}
 }

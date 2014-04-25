@@ -19,10 +19,12 @@ public abstract class AbstractDAO <T> extends BaseDAO implements GenericDAO<T>{
 
         public T save(T instance){
                log.info("inserindo dados na tabela " + typeClass .getName());
-               Session session = getSessionFactory().openSession();
+//               Session session = getSessionFactory().openSession();
 //               getSessionFactory().getCurrentSession().saveOrUpdate(instance);
-               session.saveOrUpdate( instance );
-               session.close();
+               	getCurrentSession().saveOrUpdate(instance);
+//               session.saveOrUpdate( instance );
+//               session.flush();
+//               session.close();
                return instance;               
        }
 }

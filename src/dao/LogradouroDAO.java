@@ -15,11 +15,12 @@ public class LogradouroDAO extends BaseDAO {
 
 	public List<Logradouro> carregarTodosLogradouros(){
 
-		Criteria criteria = getSessionFactory().openSession().createCriteria(Logradouro.class);
+//		Criteria criteria = getSessionFactory().openSession().createCriteria(Logradouro.class);
+		Criteria criteria = getCurrentSession().createCriteria(Logradouro.class);
 		
 		List<Logradouro> logradouros = (List<Logradouro>) criteria.list();
 		
-		getSessionFactory().close();
+//		getSessionFactory().close();
 		
 		return logradouros;
 	}

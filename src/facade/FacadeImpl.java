@@ -6,6 +6,9 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import dao.CidadeDAO;
 import dao.EstadoInterfDAO;
@@ -53,6 +56,14 @@ public class FacadeImpl implements Facade {
 	@Override
 	public List<Logradouro> carregarTodosLogradouros(){
 		return daoLogradouro.carregarTodosLogradouros();
+	}
+	
+	@Override
+	@Transactional(propagation=Propagation.REQUIRES_NEW, isolation=Isolation.SERIALIZABLE,	timeout=120)
+	public void testarTransacao(){
+		daoEstado.save( new Estado("TY", "TESTE_Y", "CAPITAL TESTE", "REGIAO") );
+		daoLogradouro.carregarTodosLogradouros();
+		daoEstado.save( new Estado("TZ", "TESTE_Z", "CAPITAL TESTE", "REGIAO") );
 	}
 	
 	// Executado durante a inicialização do bean, definido no appContext

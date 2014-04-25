@@ -79,7 +79,7 @@
 					<h:outputText id="llogradouro" value="#{msg.logradouro}" />
 				</p:column>
 				<p:column>
-					<p:selectOneMenu id="alLogradouro" value="#{cadastroMB.usuario.endereco.logradouro}">  
+					<p:selectOneMenu id="alLogradouro" value="#{cadastroMB.logradouro}">
 			            <f:selectItem itemLabel="Selecione" itemValue="" />   
 			            <f:selectItems  value="#{cadastroMB.logradouros}" var="log" itemLabel="#{log.nmLogradouro}" itemValue="#{log.idLogradouro}" />  
 			        </p:selectOneMenu> 
