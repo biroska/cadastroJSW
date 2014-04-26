@@ -88,7 +88,7 @@
 					<h:outputText id="lrua" value="#{msg.rua}" />
 				</p:column>
 				<p:column>
-					<p:inputText id="alRua" size="30" maxlength="30" value="#{cadastroMB.usuario.endereco.endereco}" />
+					<p:inputText id="alRua" size="30" maxlength="30" value="#{cadastroMB.usuario2.endereco.dsEndereco}" />
 				</p:column>
 			</p:row>
 			
@@ -118,7 +118,7 @@
 					<h:outputText id="lBairro" value="#{msg.bairro}" />
 				</p:column>
 				<p:column>
-					<p:inputText id="alBairro" size="10" maxlength="15" value="#{cadastroMB.usuario.endereco.bairro}" />
+					<p:inputText id="alBairro" size="10" maxlength="15" value="#{cadastroMB.usuario2.endereco.dsBairro}" />
 				</p:column>
 			</p:row>
 			
@@ -127,14 +127,14 @@
 					<h:outputText id="lCidade" value="#{msg.cidade}" />
 				</p:column>
 				<p:column>
-					<p:inputText id="alCidade" size="20" maxlength="15" value="#{cadastroMB.usuario.endereco.cidade}" />
+					<p:inputText id="alCidade" size="20" maxlength="15" value="#{cadastroMB.usuario2.endereco.cidade.nmCidade}" />
 				</p:column>
 			
 				<p:column>
 					<h:outputText id="lEstado" value="#{msg.estado}" />
 				</p:column>
 				<p:column>
-					<p:inputText id="alEstado" size="10" maxlength="15" value="#{cadastroMB.usuario.endereco.estado}" />
+					<p:inputText id="alEstado" size="10" maxlength="15" value="#{cadastroMB.usuario2.endereco.cidade.estado.sgEstado}" />
 				</p:column>
 			</p:row>
 			

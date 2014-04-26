@@ -21,11 +21,11 @@
 <!-- Pastas a serem escaneadas para DI -->
 	<context:component-scan base-package="beans" />
 	<context:component-scan base-package="dao" />
+	<context:component-scan base-package="entidade" />
 	<context:component-scan base-package="facade" />
 	<context:component-scan base-package="generic" />
 	<context:component-scan base-package="model" />
 	<context:component-scan base-package="registration" />
-	<context:component-scan base-package="entidade" />
 
 <!-- Configurando Conexão com banco de dados -->
 	<bean id="dataSource"
@@ -33,8 +33,8 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/aplicacoes" />
 		<property name="username" value="root" />
-<!-- 		<property name="password" value="2904pior" />  -->
-		<property name="password" value="" />
+ 		<property name="password" value="2904pior" />
+<!-- <property name="password" value="" />  -->
 	</bean>
 
 <!-- Configurando injeção da Session Factory do Hibernate -->

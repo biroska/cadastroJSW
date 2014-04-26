@@ -14,8 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import webService.CepWebService;
-import entidade.Estado;
+import entidade.Endereco;
 import entidade.Logradouro;
+import entidade.UsuarioEntity;
 import facade.Facade;
  
 @Component("cadastroMB")
@@ -28,6 +29,9 @@ public class CadastroBean {
     
     @Autowired
     private Facade facade;
+    
+    @Autowired
+    private UsuarioEntity usuario2;
     
     private String cepAlfa;
     
@@ -42,22 +46,24 @@ public class CadastroBean {
     public void onLoadSetaCampos( ComponentSystemEvent event ){
     	
     	logradouros = logradouros != null ? logradouros : facade.carregarTodosLogradouros();
-    	System.out.println("CadastroBean.onLoadSetaCampos()");
     }
     
     public void buscaEndereco( ){
     	
-    Boolean utilizaWebService = (Boolean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get( "utilizaWebService" ); // put("utilizaWebService", utilizaWebService );
+    	Boolean utilizaWebService = (Boolean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get( "utilizaWebService" ); // put("utilizaWebService", utilizaWebService );
     	    	
     	if ( utilizaWebService == true &&  cepAlfa != null && cepAlfa.length() == 9 ){
     		CepWebService cepWebService = new CepWebService( cepAlfa.replace("-", "") );
     		
     		if (cepWebService.getResultado() == 1) {
-    			usuario.getEndereco().setLogradouro( cepWebService.getTipoLogradouro() );
-    			usuario.getEndereco().setEndereco(   cepWebService.getLogradouro() );
-    			usuario.getEndereco().setEstado(     cepWebService.getEstado() );
-    			usuario.getEndereco().setCidade(     cepWebService.getCidade() );
-    			usuario.getEndereco().setBairro(     cepWebService.getBairro() );
+
+    			usuario2.getEndereco().setDsEndereco( cepWebService.getLogradouro() );
+    			usuario2.getEndereco().setDsBairro( cepWebService.getBairro() );
+    			/* Falta mandar o logradouro para a tela */
+    			usuario2.getEndereco().getLogradouro().setNmLogradouro( cepWebService.getTipoLogradouro() );
+    			usuario2.getEndereco().getCidade().setNmCidade( cepWebService.getCidade() );
+    			usuario2.getEndereco().getCidade().getEstado().setSgEstado( cepWebService.getEstado() );
+    			
             } else {
      
                 FacesContext.getCurrentInstance().addMessage(
@@ -67,8 +73,8 @@ public class CadastroBean {
                                 "O serviço está indisponível"));
             }
     	}
-    	
-    	facade.testarTransacao();
+
+//    	facade.testarTransacao();
     	
 //    	facade.addEstado( new Estado("TE", "TESTE", "CAPITAL TESTE", "REGIAO") );
 //    	
@@ -122,5 +128,13 @@ public class CadastroBean {
 
 	public void setLogradouro(Logradouro logradouro) {
 		this.logradouro = logradouro;
+	}
+
+	public UsuarioEntity getUsuario2() {
+		return usuario2;
+	}
+
+	public void setUsuario2(UsuarioEntity usuario2) {
+		this.usuario2 = usuario2;
 	}
 }
