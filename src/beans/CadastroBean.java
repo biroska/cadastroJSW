@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import webService.CepWebService;
-import entidade.Endereco;
 import entidade.Logradouro;
 import entidade.UsuarioEntity;
 import facade.Facade;
@@ -37,7 +36,7 @@ public class CadastroBean {
     
     private List<Logradouro> logradouros;
     
-    private Logradouro logradouro = new Logradouro();
+    private String logradouroSelecionado;
     
     private boolean erro = false;
     
@@ -46,6 +45,13 @@ public class CadastroBean {
     public void onLoadSetaCampos( ComponentSystemEvent event ){
     	
     	logradouros = logradouros != null ? logradouros : facade.carregarTodosLogradouros();
+    	System.out.println("CadastroBean.onLoadSetaCampos()");
+    	logradouroSelecionado = logradouros.get(2).getNmLogradouro();
+    }
+    
+    public void alterouComboLogradouro()
+    {
+      System.out.println("CadastroBean.getLoginBranchId(): " + logradouroSelecionado );
     }
     
     public void buscaEndereco( ){
@@ -59,10 +65,12 @@ public class CadastroBean {
 
     			usuario2.getEndereco().setDsEndereco( cepWebService.getLogradouro() );
     			usuario2.getEndereco().setDsBairro( cepWebService.getBairro() );
-    			/* Falta mandar o logradouro para a tela */
     			usuario2.getEndereco().getLogradouro().setNmLogradouro( cepWebService.getTipoLogradouro() );
     			usuario2.getEndereco().getCidade().setNmCidade( cepWebService.getCidade() );
     			usuario2.getEndereco().getCidade().getEstado().setSgEstado( cepWebService.getEstado() );
+
+    			/* manda o logradouro para o combo na tela */
+    			logradouroSelecionado = usuario2.getEndereco().getLogradouro().getNmLogradouro();
     			
             } else {
      
@@ -72,6 +80,9 @@ public class CadastroBean {
                                 "O serviço está indisponível",
                                 "O serviço está indisponível"));
             }
+    		
+    		System.out.println("CadastroBean.buscaEndereco(): " + logradouroSelecionado);
+    		
     	}
 
 //    	facade.testarTransacao();
@@ -80,6 +91,11 @@ public class CadastroBean {
 //    	
 //    	System.out.println("CadastroBean.buscaEndereco(): " + facade.carregarEstadoPorSigla("SP").getNmEstado() );
     	
+    }
+    
+    public void gravar()
+    {
+    	System.out.println("CadastroBean.gravar()");
     }
     
 	public Usuario getUsuario() {
@@ -122,12 +138,12 @@ public class CadastroBean {
 		this.logradouros = logradouros;
 	}
 
-	public Logradouro getLogradouro() {
-		return logradouro;
+	public String getLogradouroSelecionado() {
+		return logradouroSelecionado;
 	}
 
-	public void setLogradouro(Logradouro logradouro) {
-		this.logradouro = logradouro;
+	public void setLogradouroSelecionado(String logradouroSelecionado) {
+		this.logradouroSelecionado = logradouroSelecionado;
 	}
 
 	public UsuarioEntity getUsuario2() {

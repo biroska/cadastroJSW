@@ -1,16 +1,22 @@
 package dao;
 
+import daoInterf.CidadeInterfDAO;
+import entidade.Cidade;
+import entidade.Estado;
+import generic.AbstractDAO;
+
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
-import entidade.Cidade;
-
 @Repository("cidadeDAO")
 @Scope("prototype")
-public class CidadeDAO extends BaseDAO {
+//public class CidadeDAO extends BaseDAO {
+public class CidadeDAO extends AbstractDAO<Cidade> implements CidadeInterfDAO {
+
+	public CidadeDAO() {
+	    super(Cidade.class);
+	}
 
 //	@Autowired
 //	private SessionFactory sessionFactory;

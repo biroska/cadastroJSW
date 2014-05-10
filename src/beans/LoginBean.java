@@ -3,7 +3,6 @@ package beans;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import model.Usuario;
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import registration.bo.impl.RegistrationBoImpl;
 import dao.LoginDAO;
+import daoInterf.LoginInterfDAO;
 import facade.Facade;
  
 @Component("loginMB")
@@ -27,7 +27,7 @@ public class LoginBean {
     Usuario user;
     
     @Autowired
-    LoginDAO dao;
+    LoginInterfDAO dao;
     
     @Autowired
     Facade facade;
@@ -88,11 +88,11 @@ public class LoginBean {
 		this.user = user;
 	}
 
-	public LoginDAO getDao() {
+	public LoginInterfDAO getDao() {
 		return dao;
 	}
 
-	public void setDao(LoginDAO dao) {
+	public void setDao(LoginInterfDAO dao) {
 		this.dao = dao;
 	}
 

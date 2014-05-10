@@ -1,4 +1,4 @@
-package dao;
+package daoInterf;
 
 import entidade.Estado;
 import generic.GenericDAO;
@@ -9,5 +9,5 @@ import org.springframework.stereotype.Component;
 public interface EstadoInterfDAO extends GenericDAO<Estado> {
 	
 	public Estado carregarEstadoPorSigla( String sigla );
-
+	
 }

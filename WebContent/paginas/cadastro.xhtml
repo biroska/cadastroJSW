@@ -29,7 +29,7 @@
 					<h:outputText id="lNomeCompleto" value="#{msg.nomeCompleto}" />
 				</p:column>
 				<p:column colspan="3">
-					<h:inputText id="alNomeCompleto" size="60" maxlength="80" value="#{cadastroMB.usuario.nome}" />
+					<p:inputText id="alNomeCompleto" size="60" maxlength="80" value="#{cadastroMB.usuario2.nmUsuario}" />
 				</p:column>
 			</p:row>
 			
@@ -38,13 +38,13 @@
 					<h:outputText id="lUsuario" value="#{msg.usuario}" />
 				</p:column>
 				<p:column>
-					<p:password id="alUsuario" value="#{cadastroMB.usuario.login}" />
+					<p:inputText id="alUsuario" value="#{cadastroMB.usuario2.dsLogin}" />
 				</p:column>
 				<p:column>
 					<h:outputText id="lSenha" value="#{msg.senha}" />
 				</p:column>
 				<p:column>
-					<p:password id="alSenha" value="#{cadastroMB.usuario.senha}" />
+					<p:password id="alSenha" value="#{cadastroMB.usuario2.nuSenha}" />
 				</p:column>
 			</p:row>
 
@@ -79,10 +79,13 @@
 					<h:outputText id="llogradouro" value="#{msg.logradouro}" />
 				</p:column>
 				<p:column>
-					<p:selectOneMenu id="alLogradouro" value="#{cadastroMB.logradouro}">
+				<h:selectOneMenu id="alLogradouro" value="#{cadastroMB.logradouroSelecionado}" >
 			            <f:selectItem itemLabel="Selecione" itemValue="" />   
-			            <f:selectItems  value="#{cadastroMB.logradouros}" var="log" itemLabel="#{log.nmLogradouro}" itemValue="#{log.idLogradouro}" />  
-			        </p:selectOneMenu> 
+			            <f:selectItems  value="#{cadastroMB.logradouros}" var="log" itemLabel="#{log.nmLogradouro}" itemValue="#{log}" />
+			            
+			            <p:ajax event="change" update="alLogradouro" listener="#{cadastroMB.alterouComboLogradouro}"/>
+			            
+			        </h:selectOneMenu>
 				</p:column>
 				<p:column>
 					<h:outputText id="lrua" value="#{msg.rua}" />
@@ -97,13 +100,13 @@
 					<h:outputText id="lNumero" value="#{msg.numero}" />
 				</p:column>
 				<p:column>
-					<p:inputText id="alNumero" size="3" maxlength="6" value="#{cadastroMB.usuario.endereco.numero}" />
+					<p:inputText id="alNumero" size="3" maxlength="6" value="#{cadastroMB.usuario2.endereco.dsNumero}" />
 				</p:column>
 				<p:column>
 					<h:outputText id="lComplemento" value="#{msg.complemento}" />
 				</p:column>
 				<p:column>
-					<p:inputText id="alComplemento" size="5" maxlength="10" value="#{cadastroMB.usuario.endereco.complemento}" />
+					<p:inputText id="alComplemento" size="5" maxlength="10" value="#{cadastroMB.usuario2.endereco.dsComplemento}" />
 				</p:column>
 			</p:row>
 			
@@ -112,7 +115,7 @@
 					<h:outputText id="lReferencia" value="#{msg.referencia}" />
 				</p:column>
 				<p:column>
-					<p:inputText id="alReferencia" size="10" maxlength="15" value="#{cadastroMB.usuario.endereco.referencia}" />
+					<p:inputText id="alReferencia" size="10" maxlength="15" value="#{cadastroMB.usuario2.endereco.dsReferencia}" />
 				</p:column>
 				<p:column>
 					<h:outputText id="lBairro" value="#{msg.bairro}" />
@@ -141,7 +144,7 @@
 			
 			<p:row>
 				<p:column colspan="4" style="text-align:center" >
-					<h:commandButton id="bLogin" value="#{msg.login}" action="#{cadastroMB.buscaEndereco}" />
+					<h:commandButton id="bLogin" value="#{msg.gravar}" action="#{cadastroMB.gravar}" />
 				</p:column>
 			</p:row>
 		</p:panelGrid>

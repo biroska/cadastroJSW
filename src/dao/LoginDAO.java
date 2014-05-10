@@ -1,11 +1,19 @@
 package dao;
 
+import daoInterf.LoginInterfDAO;
+import entidade.Usuario;
+import generic.AbstractDAO;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
  
 @Repository
 @Scope("prototype")
-public class LoginDAO {
+public class LoginDAO  extends AbstractDAO<Usuario> implements LoginInterfDAO {
+
+	public LoginDAO() {
+        super(Usuario.class);
+	}
 	
 	public boolean loginUsuario( String usuario, String senha ){
 		

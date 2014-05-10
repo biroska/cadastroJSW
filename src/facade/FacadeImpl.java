@@ -10,10 +10,10 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import dao.CidadeDAO;
-import dao.EstadoInterfDAO;
 import dao.LoginDAO;
-import dao.LogradouroDAO;
+import daoInterf.CidadeInterfDAO;
+import daoInterf.EstadoInterfDAO;
+import daoInterf.LogradouroInterfDAO;
 import entidade.Cidade;
 import entidade.Estado;
 import entidade.Logradouro;
@@ -22,13 +22,13 @@ import entidade.Logradouro;
 public class FacadeImpl implements Facade {
 
 	@Autowired
-	CidadeDAO daoCidade;
+	CidadeInterfDAO daoCidade;
 	
 	@Autowired
 	EstadoInterfDAO daoEstado;
 	
 	@Autowired
-	LogradouroDAO daoLogradouro;
+	LogradouroInterfDAO daoLogradouro;
 	
 	@Override
 	public boolean loginUsuario(String usuario, String senha) {

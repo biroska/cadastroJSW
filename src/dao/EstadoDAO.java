@@ -1,5 +1,6 @@
 package dao;
 
+import daoInterf.EstadoInterfDAO;
 import entidade.Estado;
 import generic.AbstractDAO;
 
