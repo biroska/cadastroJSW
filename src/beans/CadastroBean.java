@@ -11,6 +11,7 @@ import javax.faces.event.ComponentSystemEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import uteis.ValidacaoGenerica;
 import webService.CepWebService;
 import entidade.Logradouro;
 import entidade.UsuarioEntity;
@@ -91,18 +92,16 @@ public class CadastroBean {
     private boolean validar(){
     	boolean valido = true;
     	
-    	teste( usuario2.getNmUsuario() );
+    	ValidacaoGenerica.validarObrigatorio( usuario2.getNmUsuario(), "Nome Completo Obrigatório" );
+    	
+    	ValidacaoGenerica.validarObrigatorio( usuario2.getDsLogin(), "Login Obrigatório" );
+    	
+    	ValidacaoGenerica.validarObrigatorio( usuario2.getDsSenha(), "Senha Obrigatória" );
+    	
+//    	teste( usuario2.getNmUsuario() );
     	
     	return valido; 
     }
-    
-    private boolean teste( Object obj ){
-    	
-    	Class myObj = obj.getClass();
-    	
-    	return true;
-    }
-    
     
     public void gravar()
     {
