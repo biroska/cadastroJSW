@@ -13,7 +13,7 @@
 	<h:form>
 		<div align="center">
 
-			<h:outputText value="#{loginMB.user.nome}" />
+			<h:outputText value="#{loginMB.user.nmUsuario}" />
 			<p:panelGrid>
 				<f:facet name="header">
 					<p:row>
@@ -28,7 +28,7 @@
 						<h:outputText id="lusuario" value="#{msg.usuario}" />
 					</p:column>
 					<p:column>
-						<p:inputText id="alLogin" value="#{loginMB.usuario}" />
+						<p:inputText id="alLogin" value="#{loginMB.user.dsLogin}" />
 					</p:column>
 				</p:row>
 
@@ -37,7 +37,7 @@
 						<h:outputText id="lSenha" value="#{msg.senha}" />
 					</p:column>
 					<p:column>
-						<p:password id="alSenha" value="#{loginMB.senha}" />
+						<p:password id="alSenha" value="#{loginMB.user.dsSenha}" />
 					</p:column>
 				</p:row>
 

@@ -11,11 +11,11 @@ public class UsuarioEntity extends Usuario {
 	public UsuarioEntity() {}
 
 	public UsuarioEntity(Endereco endereco, int cdUsuario, String nmUsuario,
-			String dsLogin, int nuSenha) {
+			String dsLogin, String dsSenha) {
 		super.setEndereco( endereco );
 		super.setCdUsuario( cdUsuario );
 		super.setNmUsuario( nmUsuario );
 		super.setDsLogin( dsLogin );
-		super.setNuSenha( nuSenha );
+		super.setDsSenha( dsSenha );
 	}
 }

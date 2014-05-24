@@ -5,12 +5,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import model.Usuario;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import daoInterf.LoginInterfDAO;
+import entidade.Usuario;
 import facade.Facade;
  
 @Component("loginMB")
@@ -27,19 +26,17 @@ public class LoginBean {
     @Autowired
     Facade facade;
      
-    private String usuario;
-    private String senha;
     private boolean erro = false;
     private boolean utilizaWebService = false;
      
     public String login() {
         
-        System.out.println("RegistrationUserBean:: Registering user " + usuario + " " + senha + " - utilizaWebService: " + utilizaWebService );
+        System.out.println("RegistrationUserBean:: Registering user " + user.getDsLogin() + " " + user.getDsSenha() + " - utilizaWebService: " + utilizaWebService );
         
 // Seta na sessao a opçao de usar o webservice ou não        
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("utilizaWebService", utilizaWebService );
         
-        if ( facade.loginUsuario( usuario, senha ) ){
+        if ( facade.loginUsuario( user.getDsLogin(), user.getDsSenha() ) ){
         	erro = false;
             return "paginas/cadastro";
         } else {
@@ -50,22 +47,6 @@ public class LoginBean {
             return "index";
         }
     }
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
 
 	public Usuario getUser() {
 		return user;

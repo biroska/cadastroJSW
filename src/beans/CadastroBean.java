@@ -8,8 +8,6 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
 
-import model.Usuario;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,9 +21,6 @@ import facade.Facade;
 @SessionScoped
 public class CadastroBean {
      
-    @Autowired
-    private Usuario usuario;
-    
     @Autowired
     private Facade facade;
     
@@ -93,19 +88,29 @@ public class CadastroBean {
     	
     }
     
+    private boolean validar(){
+    	boolean valido = true;
+    	
+    	teste( usuario2.getNmUsuario() );
+    	
+    	return valido; 
+    }
+    
+    private boolean teste( Object obj ){
+    	
+    	Class myObj = obj.getClass();
+    	
+    	return true;
+    }
+    
+    
     public void gravar()
     {
     	System.out.println("CadastroBean.gravar()");
+    	
+    	validar();
     }
     
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
 	public boolean isErro() {
 		return erro;
 	}

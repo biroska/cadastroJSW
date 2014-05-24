@@ -25,9 +25,9 @@ public class Usuario implements java.io.Serializable {
 	@Autowired
 	private Endereco endereco;
 	private int cdUsuario;
-	private String nmUsuario;
+	private String nmUsuario = "Biroska";
 	private String dsLogin;
-	private int nuSenha;
+	private String dsSenha;
 
 	public Usuario() {
 	}
@@ -81,11 +81,11 @@ public class Usuario implements java.io.Serializable {
 	}
 
 	@Column(name = "NU_SENHA", nullable = false)
-	public int getNuSenha() {
-		return this.nuSenha;
+	public String getDsSenha() {
+		return dsSenha;
 	}
 
-	public void setNuSenha(int nuSenha) {
-		this.nuSenha = nuSenha;
+	public void setDsSenha(String dsSenha) {
+		this.dsSenha = dsSenha;
 	}
 }
