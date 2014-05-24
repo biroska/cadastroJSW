@@ -10,8 +10,6 @@ import model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import registration.bo.impl.RegistrationBoImpl;
-import dao.LoginDAO;
 import daoInterf.LoginInterfDAO;
 import facade.Facade;
  
@@ -19,9 +17,6 @@ import facade.Facade;
 @ManagedBean(name="loginMB")
 @SessionScoped
 public class LoginBean {
-     
-    @Autowired
-    RegistrationBoImpl registrationBo;
     
     @Autowired
     Usuario user;
@@ -55,14 +50,6 @@ public class LoginBean {
             return "index";
         }
     }
-
-	public RegistrationBoImpl getRegistrationBo() {
-		return registrationBo;
-	}
-
-	public void setRegistrationBo(RegistrationBoImpl registrationBo) {
-		this.registrationBo = registrationBo;
-	}
 
 	public String getUsuario() {
 		return usuario;
