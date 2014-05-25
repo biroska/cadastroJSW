@@ -98,7 +98,17 @@ public class CadastroBean {
     	
     	ValidacaoGenerica.validarObrigatorio( usuario2.getDsSenha(), "Senha Obrigatória" );
     	
-//    	teste( usuario2.getNmUsuario() );
+    	ValidacaoGenerica.validarObrigatorio( cepAlfa, "CEP obrigatório" );
+    	
+    	ValidacaoGenerica.validarObrigatorio( usuario2.getEndereco().getDsEndereco(), "Rua obrigatório" );
+    	
+    	ValidacaoGenerica.validarObrigatorio( usuario2.getEndereco().getDsNumero(), "Número obrigatório" );
+    	
+    	ValidacaoGenerica.validarObrigatorio( usuario2.getEndereco().getDsBairro(), "Bairro obrigatório" );
+    	
+    	ValidacaoGenerica.validarObrigatorio( usuario2.getEndereco().getCidade().getNmCidade(), "Cidade obrigatório" );
+    	
+    	ValidacaoGenerica.validarObrigatorio( usuario2.getEndereco().getCidade().getEstado().getNmEstado(), "Estado obrigatório" );
     	
     	return valido; 
     }
